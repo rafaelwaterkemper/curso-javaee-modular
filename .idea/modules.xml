@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/learnModularizado.iml" filepath="$PROJECT_DIR$/learnModularizado.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learnModularizado-ear/learnModularizado-ear.iml" filepath="$PROJECT_DIR$/learnModularizado-ear/learnModularizado-ear.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learnModularizado-ejb/learnModularizado-ejb.iml" filepath="$PROJECT_DIR$/learnModularizado-ejb/learnModularizado-ejb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learnModularizado-web/learnModularizado-web.iml" filepath="$PROJECT_DIR$/learnModularizado-web/learnModularizado-web.iml" />
+    </modules>
+  </component>
+</project>
