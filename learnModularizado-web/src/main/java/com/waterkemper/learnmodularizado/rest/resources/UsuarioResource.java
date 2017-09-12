@@ -34,8 +34,26 @@ public class UsuarioResource {
     }
 
     @POST
-    public Response persist(Usuario usuario) {
+    public Response save(Usuario usuario) {
         service.save(usuario);
         return Response.ok(usuario).status(Response.Status.CREATED).build();
+    }
+
+    @PUT
+    @Path("{id}")
+    public Response update(@PathParam("id") final long id, Usuario usuario) {
+        Usuario usuarioFinded = service.findOne(id);
+        Usuario.Builder.from(usuarioFinded)
+                .login(usuario.getLogin())
+                .senha(usuario.getSenha())
+                .build();
+        return Response.ok(service.merge(usuarioFinded)).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    public Response remove(@PathParam("id") final long id) {
+        service.remove(service.findOne(id));
+        return Response.status(Response.Status.NO_CONTENT).build();
     }
 }

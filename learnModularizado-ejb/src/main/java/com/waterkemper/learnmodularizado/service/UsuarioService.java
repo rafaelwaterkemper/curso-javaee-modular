@@ -30,9 +30,16 @@ public class UsuarioService extends AbstractService<Usuario> {
     public UsuarioService() {
     }
 
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void save(Usuario usuario) {
         persist(usuario);
+    }
+
+    public void update(Usuario usuario) {
+        merge(usuario);
+    }
+
+    public void remover(Usuario usuario) {
+        remove(usuario);
     }
 
     public Usuario findOne(long id){

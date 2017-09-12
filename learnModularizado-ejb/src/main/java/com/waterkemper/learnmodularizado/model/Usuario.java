@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "INTERESSADOS")
+@Table(name = "USUARIO")
 public class Usuario {
 
     @Id
@@ -43,6 +43,10 @@ public class Usuario {
 
         public static Builder create() {
             return new Builder(new Usuario());
+        }
+
+        public static Builder from(Usuario usuario) {
+            return new Builder(usuario);
         }
 
         public Builder login(String login) {
