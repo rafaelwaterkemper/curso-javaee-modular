@@ -43,8 +43,8 @@ public class UsuarioService {
     }
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public void remover(Usuario usuario) {
-        repository.remove(usuario);
+    public void remover(Long id) {
+        repository.remove(id);
     }
 
     public Usuario findOne(long id) {

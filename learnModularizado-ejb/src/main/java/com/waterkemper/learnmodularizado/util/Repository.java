@@ -31,8 +31,8 @@ public class Repository<T> {
         return em.merge(t);
     }
 
-    public void remove(T t) {
-        em.remove(em.contains(t) ? t : em.merge(t));
+    public void remove(Long id) {
+        em.remove(em.getReference(classe, id));
     }
 
     public T findOne(long id) {

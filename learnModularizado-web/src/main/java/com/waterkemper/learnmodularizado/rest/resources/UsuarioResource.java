@@ -57,7 +57,7 @@ public class UsuarioResource {
     @DELETE
     @Path("{id}")
     public Response remove(@PathParam("id") final long id) {
-        service.remover(service.findOne(id));
+        service.remover(id);
         return Response.status(Response.Status.NO_CONTENT).build();
     }
 }
