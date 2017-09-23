@@ -16,20 +16,20 @@
  */
 package com.waterkemper.learnmodularizado.util;
 
-import java.util.logging.Logger;
-
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.lang.reflect.ParameterizedType;
+import java.util.logging.Logger;
 
 /**
  * This class uses CDI to alias Java EE resources, such as the persistence context, to CDI beans
- * 
+ * <p>
  * <p>
  * Example injection on a managed bean field:
  * </p>
- * 
+ * <p>
  * <pre>
  * &#064;Inject
  * private EntityManager em;
@@ -45,4 +45,21 @@ public class Resources {
     public Logger produceLog(InjectionPoint injectionPoint) {
         return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
     }
+
+    /**
+     * Produz uma instância de repository com o tipo do generics
+     *
+     * @param injectionPoint
+     * @param em
+     * @param <T>
+     * @return uma instacia de um repository para o tipo passado através do generics
+     */
+
+    @Produces
+    public <T> Repository<T> produceRepository(InjectionPoint injectionPoint, EntityManager em) {
+        ParameterizedType type = (ParameterizedType) injectionPoint.getType();
+        Class classe = (Class) type.getActualTypeArguments()[0];
+        return new Repository(classe, em);
+    }
+
 }

@@ -17,32 +17,42 @@
 package com.waterkemper.learnmodularizado.service;
 
 import com.waterkemper.learnmodularizado.model.Usuario;
-import com.waterkemper.learnmodularizado.util.AbstractService;
+import com.waterkemper.learnmodularizado.util.Repository;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.inject.Inject;
+import java.util.List;
 
 // The @Stateless annotation eliminates the need for manual transaction demarcation
 @Stateless
-public class UsuarioService extends AbstractService<Usuario> {
+public class UsuarioService {
 
-    public UsuarioService() {
+    @Inject
+    private Repository<Usuario> repository;
+
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    public void saveUser(Usuario usuario) {
+        repository.persist(usuario);
     }
 
-    public void save(Usuario usuario) {
-        persist(usuario);
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    public Usuario update(Usuario usuario) {
+        return repository.merge(usuario);
     }
 
-    public void update(Usuario usuario) {
-        merge(usuario);
-    }
-
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void remover(Usuario usuario) {
-        remove(usuario);
+        repository.remove(usuario);
     }
 
-    public Usuario findOne(long id){
-        return find(Usuario.class, id);
+    public Usuario findOne(long id) {
+        return repository.findOne(id);
     }
+
+    public List<Usuario> findAll() {
+        return repository.findAll();
+    }
+
 }

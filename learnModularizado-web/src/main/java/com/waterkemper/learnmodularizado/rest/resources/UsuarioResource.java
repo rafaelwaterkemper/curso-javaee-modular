@@ -18,8 +18,11 @@ public class UsuarioResource {
     private UsuarioService service;
 
     @GET
-    public Response findAll() {
-        return Response.ok(service.findAll(Usuario.class)).build();
+    public Response findAll(@DefaultValue("50") @QueryParam("limit") Long limit,
+                            @DefaultValue("0") @QueryParam("offset") Long offset,
+                            @DefaultValue("") @QueryParam("filter") Long filter,
+                            @DefaultValue("+nome") @QueryParam("sort") Long sort) {
+        return Response.ok(service.findAll()).build();
     }
 
     @GET
@@ -35,7 +38,7 @@ public class UsuarioResource {
 
     @POST
     public Response save(Usuario usuario) {
-        service.save(usuario);
+        service.saveUser(usuario);
         return Response.ok(usuario).status(Response.Status.CREATED).build();
     }
 
@@ -43,17 +46,18 @@ public class UsuarioResource {
     @Path("{id}")
     public Response update(@PathParam("id") final long id, Usuario usuario) {
         Usuario usuarioFinded = service.findOne(id);
+        //Criar DTO ou um mapper
         Usuario.Builder.from(usuarioFinded)
                 .login(usuario.getLogin())
                 .senha(usuario.getSenha())
                 .build();
-        return Response.ok(service.merge(usuarioFinded)).build();
+        return Response.ok(service.update(usuarioFinded)).build();
     }
 
     @DELETE
     @Path("{id}")
     public Response remove(@PathParam("id") final long id) {
-        service.remove(service.findOne(id));
+        service.remover(service.findOne(id));
         return Response.status(Response.Status.NO_CONTENT).build();
     }
 }
