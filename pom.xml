@@ -63,6 +63,7 @@
         <!-- maven-compiler-plugin -->
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
+        <querydsl.version>3.7.4</querydsl.version>
     </properties>
 
     <dependencyManagement>
@@ -110,6 +111,20 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>com.mysema.querydsl</groupId>
+                <artifactId>querydsl-jpa</artifactId>
+                <version>${querydsl.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.mysema.querydsl</groupId>
+                <artifactId>querydsl-apt</artifactId>
+                <version>${querydsl.version}</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 

@@ -46,12 +46,15 @@ public class UsuarioResource {
     @Path("{id}")
     public Response update(@PathParam("id") final long id, Usuario usuario) {
         Usuario usuarioFinded = service.findOne(id);
-        //Criar DTO ou um mapper
-        Usuario.Builder.from(usuarioFinded)
-                .login(usuario.getLogin())
-                .senha(usuario.getSenha())
-                .build();
-        return Response.ok(service.update(usuarioFinded)).build();
+
+        if (Objects.isNull(usuarioFinded)) {
+            return Response
+                    .status(Response.Status.NOT_FOUND)
+                    .entity("O id passado para atualizar não existe.")
+                    .build();
+        }
+
+        return Response.ok(service.update(usuario)).build();
     }
 
     @DELETE
