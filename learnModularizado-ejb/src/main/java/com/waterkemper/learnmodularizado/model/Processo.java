@@ -21,7 +21,6 @@ public class Processo {
     private String assunto;
 
     @NotNull
-    @Column(name = "CLIENTE")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ID_CLIENTE", nullable = false,
             foreignKey = @ForeignKey(name = "FK_PROCESSO_CLIENTE"))

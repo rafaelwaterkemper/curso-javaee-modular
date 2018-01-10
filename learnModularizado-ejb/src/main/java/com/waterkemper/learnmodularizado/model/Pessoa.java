@@ -8,7 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "PESSOA")
@@ -38,7 +38,7 @@ public class Pessoa {
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATA_NASCIMENTO", nullable = false)
-    private LocalDateTime dataNascimento;
+    private Date dataNascimento;
 
     @NotNull
     @Size(max = 11, message = "O CPF deve conter onze dígitos")
@@ -56,7 +56,7 @@ public class Pessoa {
         return email;
     }
 
-    public LocalDateTime getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
@@ -92,7 +92,7 @@ public class Pessoa {
             return this;
         }
 
-        public Builder dataNascimento(LocalDateTime dataNascimento){
+        public Builder dataNascimento(Date dataNascimento) {
             entity.dataNascimento = dataNascimento;
             return this;
         }

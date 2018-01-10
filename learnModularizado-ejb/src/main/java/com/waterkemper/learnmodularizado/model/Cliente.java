@@ -17,12 +17,12 @@ public class Cliente {
     private long id;
 
     @NotNull
-    @Column(name = "pessoa_id")
-    @JoinColumn(name = "ID_PESSOA", nullable = false,
+    @OneToOne
+    @JoinColumn(name = "id_pessoa", nullable = false,
             foreignKey = @ForeignKey(name = "FK_CLIENTE_PESSOA"))
     private Pessoa pessoa;
 
-    @OneToMany(mappedBy = "CLIENTE")
+    @OneToMany(mappedBy = "cliente")
     private List<Processo> processos;
 
     @Size(max = 2000)

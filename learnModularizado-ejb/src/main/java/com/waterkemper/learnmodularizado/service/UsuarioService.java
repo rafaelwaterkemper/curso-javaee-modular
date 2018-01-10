@@ -24,11 +24,10 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
-import javax.validation.Valid;
-import java.util.List;
 
 // The @Stateless annotation eliminates the need for manual transaction demarcation
 @Stateless
+@TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class UsuarioService extends AbstractService<Usuario>{
 
     @Inject
