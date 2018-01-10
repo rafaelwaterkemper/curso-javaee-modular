@@ -7,6 +7,7 @@ import com.mysema.query.types.Predicate;
 import com.mysema.query.types.path.PathBuilderFactory;
 
 import javax.persistence.EntityManager;
+import javax.validation.Valid;
 import java.util.List;
 
 public class Repository<T> {
@@ -53,5 +54,6 @@ public class Repository<T> {
     private JPQLQuery from(EntityPath path) {
         return new JPAQuery(em).from(path);
     }
+
 
 }
