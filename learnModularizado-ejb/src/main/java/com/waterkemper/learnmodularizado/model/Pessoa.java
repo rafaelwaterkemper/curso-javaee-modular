@@ -12,18 +12,28 @@ import java.util.Date;
 
 @Entity
 @Table(name = "PESSOA")
-@SequenceGenerator(name = "SEQ_PESSOA", sequenceName = "SEQ_PESSOA")
+@SequenceGenerator(name = "seq_pessoa", sequenceName = "SEQ_PESSOA", allocationSize = 1)
 public class Pessoa {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_PESSOA")
+    @GeneratedValue(generator = "seq_pessoa")
     private long id;
 
     @NotNull
     @Size(min = 1, max = 75)
     @Pattern(regexp = "[^0-9]*", message = "O nome não deve conter números")
-    @Column(name = "NOME")
+    @Column(name = "NOME", nullable = false)
     private String nome;
+
+    @NotNull
+    @Temporal(TemporalType.DATE)
+    @Column(name = "DATA_NASCIMENTO", nullable = false)
+    private Date dataNascimento;
+
+    @NotNull
+    @Size(max = 11, message = "O CPF deve conter onze dígitos")
+    @Column(name = "CPF", nullable = false)
+    private String cpf;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "SEXO")
@@ -35,17 +45,11 @@ public class Pessoa {
     @Column(name = "EMAIL")
     private String email;
 
-    @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "DATA_NASCIMENTO", nullable = false)
-    private Date dataNascimento;
-
-    @NotNull
-    @Size(max = 11, message = "O CPF deve conter onze dígitos")
-    @Column(name = "CPF", nullable = false)
-    private String cpf;
-
     public Pessoa() {
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getNome() {

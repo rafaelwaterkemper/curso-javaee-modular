@@ -1,7 +1,5 @@
 package com.waterkemper.learnmodularizado.util;
 
-import com.waterkemper.learnmodularizado.model.Usuario;
-
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.validation.Valid;
@@ -10,7 +8,7 @@ import java.util.List;
 public abstract class AbstractService<T> {
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public void saveUser(@Valid T t) {
+    public void save(@Valid T t) {
         getRepository().persist(t);
     }
 

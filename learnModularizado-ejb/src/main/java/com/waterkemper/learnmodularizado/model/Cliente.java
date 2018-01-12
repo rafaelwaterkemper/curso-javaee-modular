@@ -9,15 +9,15 @@ import java.util.List;
 
 @Entity
 @Table(name = "CLIENTE")
-@SequenceGenerator(name = "SEQ_CLIENTE", sequenceName = "SEQ_CLIENTE")
+@SequenceGenerator(name = "seq_cliente", sequenceName = "SEQ_CLIENTE", allocationSize = 1)
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_CLIENTE")
+    @GeneratedValue(generator = "seq_cliente")
     private long id;
 
     @NotNull
-    @OneToOne
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "id_pessoa", nullable = false,
             foreignKey = @ForeignKey(name = "FK_CLIENTE_PESSOA"))
     private Pessoa pessoa;

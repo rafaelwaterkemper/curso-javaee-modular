@@ -38,7 +38,7 @@ public class UsuarioResource {
 
     @POST
     public Response save(Usuario usuario) {
-        service.saveUser(usuario);
+        service.save(usuario);
         return Response.ok(usuario).status(Response.Status.CREATED).build();
     }
 

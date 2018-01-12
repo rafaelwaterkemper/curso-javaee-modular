@@ -8,11 +8,11 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "PROCESSO")
-@SequenceGenerator(name = "SEQ_PROCESSOS")
+@SequenceGenerator(name = "seq_processos", sequenceName = "SEQ_PROCESSOS", allocationSize = 1)
 public class Processo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "seq_processos")
     private long id;
 
     @NotNull
@@ -27,6 +27,10 @@ public class Processo {
     private Cliente cliente;
 
     public Processo() {
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getAssunto() {
