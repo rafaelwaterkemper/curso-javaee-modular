@@ -2,6 +2,8 @@ package com.waterkemper.learnmodularizado.util;
 
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.validation.Constraint;
+import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
 import java.util.List;
 

@@ -27,7 +27,7 @@ public class UsuarioResource {
 
     @GET
     @Path("{id}")
-    public Response findOne(@PathParam("id") final long id) {
+    public Response findOne(    @PathParam("id") final long id) {
         Usuario usuario = service.findOne(id);
         if (Objects.isNull(usuario)) {
             return Response.status(Response.Status.NOT_FOUND).build();

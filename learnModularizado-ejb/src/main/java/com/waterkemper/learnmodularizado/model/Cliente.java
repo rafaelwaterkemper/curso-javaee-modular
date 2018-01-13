@@ -17,7 +17,7 @@ public class Cliente {
     private long id;
 
     @NotNull
-    @OneToOne(orphanRemoval = true, cascade = CascadeType.REMOVE)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_pessoa", nullable = false,
             foreignKey = @ForeignKey(name = "FK_CLIENTE_PESSOA"))
     private Pessoa pessoa;
@@ -41,6 +41,10 @@ public class Cliente {
         return pessoa;
     }
 
+    public String getObservacao() {
+        return observacao;
+    }
+
     public static class Builder extends AbstractEntityBuilder<Cliente, Builder>{
 
         public Builder(Cliente entity) {
@@ -57,6 +61,11 @@ public class Cliente {
 
         public Builder cliente(Pessoa pessoa){
             entity.pessoa = pessoa;
+            return this;
+        }
+
+        public Builder observacao(String observacao){
+            entity.observacao = observacao;
             return this;
         }
     }
