@@ -1,11 +1,13 @@
 package com.waterkemper.learnmodularizado.util;
 
+import com.mysema.query.types.Predicate;
+
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
-import javax.validation.Constraint;
-import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
+import java.util.logging.Logger;
 
 public abstract class AbstractService<T> {
 
@@ -28,8 +30,8 @@ public abstract class AbstractService<T> {
         return getRepository().findOne(id);
     }
 
-    public List<T> findAll() {
-        return getRepository().findAll();
+    public List<T> findAll(Predicate... predicates) {
+        return getRepository().findAll(predicates);
     }
 
     public abstract Repository<T> getRepository();

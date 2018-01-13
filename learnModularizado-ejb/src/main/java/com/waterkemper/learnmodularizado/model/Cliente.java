@@ -1,10 +1,14 @@
 package com.waterkemper.learnmodularizado.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.waterkemper.learnmodularizado.util.AbstractEntityBuilder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -21,9 +25,9 @@ public class Cliente {
     @JoinColumn(name = "id_pessoa", nullable = false,
             foreignKey = @ForeignKey(name = "FK_CLIENTE_PESSOA"))
     private Pessoa pessoa;
-
-    @OneToMany(mappedBy = "cliente")
-    private List<Processo> processos;
+//    Questionar a maneira correta para não entrar em dependência cíclica
+//    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private List<Processo> processos = new ArrayList<>();
 
     @Size(max = 2000)
     @Column(name = "OBSERVACAO")
@@ -44,6 +48,10 @@ public class Cliente {
     public String getObservacao() {
         return observacao;
     }
+//    Questionar a maneira correta para não entrar em dependência cíclica
+//    public List<Processo> getProcessos() {
+//        return processos;
+//    }
 
     public static class Builder extends AbstractEntityBuilder<Cliente, Builder>{
 
@@ -68,5 +76,6 @@ public class Cliente {
             entity.observacao = observacao;
             return this;
         }
+
     }
 }

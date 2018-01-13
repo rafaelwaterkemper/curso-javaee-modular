@@ -1,6 +1,8 @@
 package com.waterkemper.learnmodularizado.service;
 
+import com.mysema.query.BooleanBuilder;
 import com.waterkemper.learnmodularizado.model.Processo;
+import com.waterkemper.learnmodularizado.model.QProcesso;
 import com.waterkemper.learnmodularizado.util.AbstractService;
 import com.waterkemper.learnmodularizado.util.Repository;
 
@@ -17,4 +19,5 @@ public class ProcessoService extends AbstractService<Processo> {
     public Repository<Processo> getRepository() {
         return repository;
     }
+
 }

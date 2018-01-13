@@ -1,14 +1,15 @@
 package com.waterkemper.learnmodularizado.rest.resources;
 
-import com.waterkemper.learnmodularizado.model.Cliente;
+import com.mysema.query.types.Predicate;
 import com.waterkemper.learnmodularizado.model.Processo;
-import com.waterkemper.learnmodularizado.model.Usuario;
+import com.waterkemper.learnmodularizado.model.QProcesso;
 import com.waterkemper.learnmodularizado.service.ProcessoService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 import java.util.Objects;
 
 @Path("processo")
@@ -36,6 +37,16 @@ public class ProcessoResource {
         }
 
         return Response.ok(processo).build();
+    }
+
+    @GET
+    @Path("cliente/{id}")
+    public Response findProcess(@PathParam("id") final long id){
+        QProcesso processo = QProcesso.processo;
+        Predicate processoPredicate = processo.cliente().id.eq(id);
+
+        List<Processo> processos = service.findAll(processoPredicate);
+        return Response.ok(processos).build();
     }
 
     @POST

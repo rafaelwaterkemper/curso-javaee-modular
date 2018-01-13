@@ -1,5 +1,6 @@
 package com.waterkemper.learnmodularizado.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.waterkemper.learnmodularizado.util.AbstractEntityBuilder;
 
 import javax.persistence.*;
@@ -21,7 +22,7 @@ public class Processo {
     private String assunto;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "ID_CLIENTE", nullable = false,
             foreignKey = @ForeignKey(name = "FK_PROCESSO_CLIENTE"))
     private Cliente cliente;
