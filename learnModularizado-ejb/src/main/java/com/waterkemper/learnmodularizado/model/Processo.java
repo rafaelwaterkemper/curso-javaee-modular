@@ -1,6 +1,5 @@
 package com.waterkemper.learnmodularizado.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.waterkemper.learnmodularizado.util.AbstractEntityBuilder;
 
 import javax.persistence.*;
@@ -13,7 +12,7 @@ import javax.validation.constraints.Size;
 public class Processo {
 
     @Id
-    @GeneratedValue(generator = "seq_processos")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_processos")
     private long id;
 
     @NotNull

@@ -77,6 +77,12 @@
          <scope>provided</scope>
       </dependency>
 
+      <dependency>
+         <groupId>org.ebaysf.web</groupId>
+         <artifactId>cors-filter</artifactId>
+         <version>1.0.0</version>
+      </dependency>
+
       <!-- JSR-303 (Bean Validation) Implementation -->
        <!-- Provides portable constraints such as @Email -->
        <!-- Hibernate Validator is shipped in JBoss WildFly -->

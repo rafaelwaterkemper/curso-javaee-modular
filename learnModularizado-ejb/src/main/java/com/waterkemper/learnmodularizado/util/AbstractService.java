@@ -6,8 +6,6 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
-import java.util.logging.Logger;
 
 public abstract class AbstractService<T> {
 

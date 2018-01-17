@@ -16,7 +16,7 @@ import java.util.Date;
 public class Pessoa {
 
     @Id
-    @GeneratedValue(generator = "seq_pessoa")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_pessoa")
     private long id;
 
     @NotNull

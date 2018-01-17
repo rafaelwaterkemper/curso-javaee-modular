@@ -1,15 +1,10 @@
 package com.waterkemper.learnmodularizado.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.waterkemper.learnmodularizado.util.AbstractEntityBuilder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 @Entity
 @Table(name = "CLIENTE")
@@ -17,16 +12,17 @@ import java.util.List;
 public class Cliente {
 
     @Id
-    @GeneratedValue(generator = "seq_cliente")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_cliente")
     private long id;
 
     @NotNull
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne
     @JoinColumn(name = "id_pessoa", nullable = false,
             foreignKey = @ForeignKey(name = "FK_CLIENTE_PESSOA"))
     private Pessoa pessoa;
-//    Questionar a maneira correta para não entrar em dependência cíclica
-//    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+    //    Questionar a maneira correta para não entrar em dependência cíclica
+//    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<Processo> processos = new ArrayList<>();
 
     @Size(max = 2000)
