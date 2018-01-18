@@ -1,10 +1,13 @@
 package com.waterkemper.learnmodularizado.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.waterkemper.learnmodularizado.util.AbstractEntityBuilder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "CLIENTE")
@@ -21,9 +24,11 @@ public class Cliente {
             foreignKey = @ForeignKey(name = "FK_CLIENTE_PESSOA"))
     private Pessoa pessoa;
 
-    //    Questionar a maneira correta para não entrar em dependência cíclica
-//    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Processo> processos = new ArrayList<>();
+    //Questionar a maneira correta para não entrar em dependência cíclica
+    //Esta situação se resolve com DTO
+    @JsonIgnore
+    @OneToMany(mappedBy = "cliente")
+    private List<Processo> processos = new ArrayList<>();
 
     @Size(max = 2000)
     @Column(name = "OBSERVACAO")
