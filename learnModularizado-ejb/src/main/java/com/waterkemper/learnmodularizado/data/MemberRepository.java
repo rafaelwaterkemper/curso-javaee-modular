@@ -16,6 +16,8 @@
  */
 package com.waterkemper.learnmodularizado.data;
 
+import com.waterkemper.learnmodularizado.model.Member;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -23,8 +25,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
-
-import com.waterkemper.learnmodularizado.model.Member;
 
 @ApplicationScoped
 public class MemberRepository {

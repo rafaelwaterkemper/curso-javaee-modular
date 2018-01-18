@@ -78,6 +78,12 @@
       </dependency>
 
       <dependency>
+         <groupId>com.fasterxml.jackson.datatype</groupId>
+         <artifactId>jackson-datatype-jsr310</artifactId>
+         <version>2.9.3</version>
+      </dependency>
+
+      <dependency>
          <groupId>org.ebaysf.web</groupId>
          <artifactId>cors-filter</artifactId>
          <version>1.0.0</version>

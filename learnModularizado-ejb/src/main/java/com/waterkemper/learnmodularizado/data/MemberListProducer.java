@@ -16,6 +16,8 @@
  */
 package com.waterkemper.learnmodularizado.data;
 
+import com.waterkemper.learnmodularizado.model.Member;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Observes;
@@ -24,8 +26,6 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
-
-import com.waterkemper.learnmodularizado.model.Member;
 
 @RequestScoped
 public class MemberListProducer {

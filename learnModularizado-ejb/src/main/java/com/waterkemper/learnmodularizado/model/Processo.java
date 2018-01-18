@@ -5,6 +5,7 @@ import com.waterkemper.learnmodularizado.util.AbstractEntityBuilder;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "PROCESSO")
@@ -16,15 +17,24 @@ public class Processo {
     private long id;
 
     @NotNull
+    @ManyToOne
+    @JoinColumn(name = "ID_CLIENTE", nullable = false,
+            foreignKey = @ForeignKey(name = "FK_PROCESSO_CLIENTE"))
+    private Cliente cliente;
+
+    @NotNull
     @Size(max = 2000)
     @Column(name = "ASSUNTO")
     private String assunto;
 
     @NotNull
-    @ManyToOne
-    @JoinColumn(name = "ID_CLIENTE", nullable = false,
-            foreignKey = @ForeignKey(name = "FK_PROCESSO_CLIENTE"))
-    private Cliente cliente;
+    @Column(name = "HONORARIO", nullable = false, precision = 15, scale = 5)
+    private BigDecimal honorario;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "STATUS", nullable = false)
+    private Status status;
 
     public Processo() {
     }
@@ -39,6 +49,14 @@ public class Processo {
 
     public Cliente getCliente() {
         return cliente;
+    }
+
+    public BigDecimal getHonorario() {
+        return honorario;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 
     public static class Builder extends AbstractEntityBuilder<Processo, Cliente.Builder>{
@@ -61,6 +79,16 @@ public class Processo {
 
         public Builder cliente(Cliente cliente){
             entity.cliente = cliente;
+            return this;
+        }
+
+        public Builder honorario(BigDecimal honorario) {
+            entity.honorario = honorario;
+            return this;
+        }
+
+        public Builder status(Status status) {
+            entity.status = status;
             return this;
         }
     }
