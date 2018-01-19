@@ -20,9 +20,9 @@ public class PessoaResource {
     @GET
     public Response findAll(@DefaultValue("50") @QueryParam("limit") Long limit,
                             @DefaultValue("0") @QueryParam("offset") Long offset,
-                            @DefaultValue("") @QueryParam("filter") Long filter,
+                            @DefaultValue("") @QueryParam("filter") String filter,
                             @DefaultValue("+nome") @QueryParam("sort") Long sort) {
-        return Response.ok(service.findAll()).build();
+        return Response.ok(service.findAll(offset, limit, filter)).build();
     }
 
     @GET

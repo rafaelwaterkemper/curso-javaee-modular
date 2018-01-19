@@ -7,8 +7,8 @@ import com.mysema.query.types.Predicate;
 import com.mysema.query.types.path.PathBuilderFactory;
 
 import javax.persistence.EntityManager;
-import javax.validation.Valid;
 import java.util.List;
+import java.util.Objects;
 
 public class Repository<T> {
 
@@ -40,13 +40,16 @@ public class Repository<T> {
         return em.find(classe, id);
     }
 
-    public List<T> findAll(Predicate... predicates) {
+    public List<T> findAll(long offset, long limit, Predicate... predicates) {
         EntityPath<T> path = pathBuilderFactory.create(classe);
         JPQLQuery query = from(path);
 
-        if (predicates.length > 0) {
+        if (Objects.nonNull(predicates)) {
             query.where(predicates);
         }
+
+        query.offset(offset);
+        query.limit(limit);
 
         return query.list(path);
     }

@@ -28,8 +28,8 @@ public abstract class AbstractService<T> {
         return getRepository().findOne(id);
     }
 
-    public List<T> findAll(Predicate... predicates) {
-        return getRepository().findAll(predicates);
+    public List<T> findAll(long offset, long limit, Predicate... predicates) {
+        return getRepository().findAll(offset, limit, predicates);
     }
 
     public abstract Repository<T> getRepository();

@@ -22,7 +22,7 @@ public class UsuarioResource {
                             @DefaultValue("0") @QueryParam("offset") Long offset,
                             @DefaultValue("") @QueryParam("filter") Long filter,
                             @DefaultValue("+nome") @QueryParam("sort") Long sort) {
-        return Response.ok(service.findAll()).build();
+        return Response.ok(service.findAll(offset, limit)).build();
     }
 
     @GET

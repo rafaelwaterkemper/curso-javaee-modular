@@ -23,9 +23,9 @@ public class ProcessoResource {
     @GET
     public Response findAll(@DefaultValue("50") @QueryParam("limit") Long limit,
                             @DefaultValue("0") @QueryParam("offset") Long offset,
-                            @DefaultValue("") @QueryParam("filter") Long filter,
+                            @DefaultValue("") @QueryParam("filter") String filter,
                             @DefaultValue("+nome") @QueryParam("sort") Long sort) {
-        return Response.ok(service.findAll()).build();
+        return Response.ok(service.findAll(offset, limit, filter)).build();
     }
 
     @GET
@@ -45,7 +45,7 @@ public class ProcessoResource {
         QProcesso processo = QProcesso.processo;
         Predicate processoPredicate = processo.cliente().id.eq(id);
 
-        List<Processo> processos = service.findAll(processoPredicate);
+        List<Processo> processos = service.findAll(0, 50, processoPredicate);
         return Response.ok(processos).build();
     }
 
