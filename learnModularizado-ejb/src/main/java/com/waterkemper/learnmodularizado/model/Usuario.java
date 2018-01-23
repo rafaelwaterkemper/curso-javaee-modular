@@ -27,7 +27,6 @@ public class Usuario {
     protected Usuario() {
     }
 
-
     public long getId() {
         return id;
     }

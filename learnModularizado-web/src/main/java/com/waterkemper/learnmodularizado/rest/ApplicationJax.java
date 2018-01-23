@@ -17,7 +17,6 @@
 package com.waterkemper.learnmodularizado.rest;
 
 import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
 
 @ApplicationPath("lawofficer")
 public class ApplicationJax extends javax.ws.rs.core.Application {

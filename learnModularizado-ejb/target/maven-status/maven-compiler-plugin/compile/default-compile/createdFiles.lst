@@ -1,9 +1,0 @@
-com\waterkemper\learnmodularizado\data\MemberRepository.class
-com\waterkemper\learnmodularizado\data\MemberListProducer.class
-com\waterkemper\learnmodularizado\service\UsuarioService.class
-com\waterkemper\learnmodularizado\util\Resources.class
-com\waterkemper\learnmodularizado\model\Member.class
-com\waterkemper\learnmodularizado\util\AbstractService.class
-com\waterkemper\learnmodularizado\util\AbstractEntityBuilder.class
-com\waterkemper\learnmodularizado\model\Usuario$Builder.class
-com\waterkemper\learnmodularizado\model\Usuario.class
