@@ -29,7 +29,7 @@
    <defaultProtocol type="Servlet 3.0" />
 
     <!-- Configuration to be used when the WidlFly remote profile is active -->
-    <container qualifier="widlfly-remote">
+    <container qualifier="arq-widlfly-remote">
         <configuration>
             <property name="managementAddress">127.0.0.1</property>
             <property name="managementPort">9990</property>
